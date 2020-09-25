@@ -26,6 +26,7 @@ import (
 	appscontrollers "github.com/rancher/wrangler/pkg/generated/controllers/apps/v1"
 	"github.com/rancher/wrangler/pkg/generated/controllers/core"
 	corecontrollers "github.com/rancher/wrangler/pkg/generated/controllers/core/v1"
+	_ "github.com/rancher/wrangler/pkg/generated/controllers/networking.k8s.io"
 	"github.com/rancher/wrangler/pkg/generated/controllers/rbac"
 	rbaccontrollers "github.com/rancher/wrangler/pkg/generated/controllers/rbac/v1"
 	"github.com/rancher/wrangler/pkg/leader"
