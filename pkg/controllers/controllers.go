@@ -5,6 +5,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/rancher/fleet/pkg/controllers/image"
+
 	"github.com/rancher/fleet/pkg/controllers/bootstrap"
 	"github.com/rancher/fleet/pkg/controllers/bundle"
 	"github.com/rancher/fleet/pkg/controllers/cleanup"
@@ -202,6 +204,11 @@ func Register(ctx context.Context, systemNamespace string, cfg clientcmd.ClientC
 		appCtx.GitRepo(),
 		appCtx.BundleDeployment(),
 		appCtx.Bundle())
+
+	image.Register(ctx,
+		appCtx.Core,
+		appCtx.GitRepo(),
+		appCtx.ImageScan())
 
 	leader.RunOrDie(ctx, systemNamespace, "fleet-controller-lock", appCtx.K8s, func(ctx context.Context) {
 		if err := appCtx.start(ctx); err != nil {
